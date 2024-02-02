@@ -71,3 +71,6 @@ gem "devise", "~> 4.9"
 gem "sassc-rails"
 
 gem 'rails_admin', '~> 3.0'
+
+gem 'bootstrap', '~> 5.0'
+
