@@ -1,11 +1,8 @@
 class HomeController < ApplicationController
-  
   def index
-  end
-  def show
-    @event = Event.find(params[:id])
-    respond_to do |format|
-      format.js
-    end
-  end
+    @restaurants = Restaurant.all
+    @newly_opened_restaurants = Restaurant.newly_opened
+    @trending_restaurants = Restaurant.trending
+    @collections = Collection.includes(:places).all
+  end 
 end

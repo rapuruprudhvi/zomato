@@ -8,6 +8,15 @@
     margin-right: 5px;
     margin-top: 10px; 
   }
-  
- 
+  .logo{
+    height: 30px;
+    width: 30px;
+    margin-top: 22px;
+  }
+  .out{
+   margin-top: 20px;
+  }
+ .weight{
+  color:#888;
+ }
   
