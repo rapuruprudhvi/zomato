@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="col-md-2">
+      <img src="https://b.zmtcdn.com/web_assets/b40b97e677bc7b2ca77c58c61db266fe1603954218.png" tabindex="0" class="sc-yvzia9-6 hxTfPc" width="129" height="27">
+    </div>
+    <div class="col-md-7">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <!-- Location -->
+            <i class="fa fa-map-marker"></i>
+            <%= turbo_frame_tag "location_modal" do %>
+              <%= text_field_tag 'location', nil, class: 'form-control', placeholder: 'Enter location', style: 'margin-left: 32px;' %>
+            <% end %>
+          </div>
+          <div class="col-md-8">
+            <%= text_field_tag 'search', nil, class: 'form-control', placeholder: 'Search for restaurant, cuisine or a dish' %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <%= link_to new_user_session_path, class: 'btn me-2', remote: true, data: { turbo_frame: 'login_modal' } do %>
+        Log in
+      <% end %>
+      <a href="<%= new_user_registration_path %>" class="btn">Sign up</a>
+    </div>
+  </nav>
     <title>Zomato</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
@@ -12,23 +40,16 @@
 </div>
   </head>
   <body>
-
-  
-    
-
     <% if user_signed_in? %>
-      <!-- app/views/layouts/_sign_out_button.html.erb -->
       <%= form_tag(destroy_user_session_path, method: :delete, data: { turbo_frame: "sign-out-frame" }) do %>
         <%= submit_tag "Sign Out" %>
       <% end %>
     <% else %>
-      <!-- You can add a Sign In link or button here if needed -->
     <% end %>
-  
     <%= stylesheet_link_tag 'application', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' %>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <%= turbo_frame_tag "modal" %>
     <%= yield %>
   </body>
 </html>
+

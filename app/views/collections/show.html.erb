@@ -1,0 +1,22 @@
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-md-4 mb-4">
+      <div class="card" onmouseover="highlightCard(this)" onmouseout="unhighlightCard(this)">
+        <div class="card-body">
+          <h5 class="card-title"><strong>Restaurant: <%= restaurant.name %></strong></h5>
+          <p class="card-text">Address: <%= restaurant.address %></p>
+          <p class="card-text">Cuisine: <%= restaurant.cuisine %></p>
+          <p class="card-text">Rating: <span class="badge badge-success"><%= restaurant.rating %> <i class="sc-1q7bklc-5 kHxpSk""></i></span></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<script>
+  function highlightCard(card) {
+    card.style.backgroundColor = '#f0f0f0'; 
+  }
+  function unhighlightCard(card) {
+    card.style.backgroundColor = ''; 
+  }
+</script>
