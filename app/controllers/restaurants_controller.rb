@@ -18,5 +18,9 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.where(rooftop: true)
     render :index 
   end
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+  
 
 end

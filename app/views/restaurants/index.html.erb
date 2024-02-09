@@ -1,18 +1,29 @@
 <div class="container">
+<div class="row" style="width: 1100px; height: 320px;">
+  <div class="col-md-12">
+    <div class="card" style="width: 100%; height: 100%;">
+      <div class="card-body">
+      </div>
+    </div>
+  </div>
+</div>
 <div class="row">
   <% @restaurants.each do |restaurant| %>
-    <div class="col-md-3 mb-4">
-      <div class="card" onmouseover="highlightCard(this)" onmouseout="unhighlightCard(this)">
-        <div class="card-body">
-          <h5 class="card-title"><strong>Restaurant: <%= restaurant.name %></strong></h5>
-          <p class="card-text">Address: <%= restaurant.address %></p>
-          <p class="card-text">Cuisine: <%= restaurant.cuisine %></p>
-          <p class="card-text">Rating: <span class="badge badge-success"><%= restaurant.rating %> <i class="sc-1q7bklc-5 kHxpSk""></i></span></p>
+    <div class="col-md-3 mb-4" style="margin-top: 45px;"> 
+      <a href="/restaurants/<%= restaurant.id %>" style="text-decoration: none;">
+        <div class="card" style="width: 261px; height: 185px;" onmouseover="highlightCard(this)" onmouseout="unhighlightCard(this)">
+          <div class="card-body">
+            <h5 class="card-title"><strong>Restaurant: <%= restaurant.name %></strong></h5>
+            <p class="card-text">Address: <%= restaurant.address %></p>
+            <p class="card-text">Cuisine: <%= restaurant.cuisine %></p>
+            <p class="card-text">Rating: <span class="badge badge-success"><%= restaurant.rating %> <i class="sc-1q7bklc-5 kHxpSk""></i></span></p>
+          </div>
         </div>
-      </div>
+      </a>
     </div>
   <% end %>
 </div>
+
 </div>
 <script>
   function highlightCard(card) {

@@ -22,4 +22,8 @@ Rails.application.routes.draw do
       get 'rooftop'
     end  
   end
+  resources :restaurants do
+    resources :reviews, only: [:create]
+  end
+  
 end
