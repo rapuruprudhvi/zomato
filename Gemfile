@@ -75,3 +75,4 @@ gem 'bootstrap', '~> 5.0'
 
 gem 'bootsnap', require: false
 
+gem 'kaminari'

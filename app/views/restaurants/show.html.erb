@@ -55,14 +55,43 @@
     <p><strong>Rating:</strong> <%= @restaurant.rating %></p>
   </div>
   <div id="reviews-content" class="hidden">
-    <% @restaurant.reviews.each do |review| %>
-      <div class="review">
-        <p><strong>User Name:</strong> <%= review.user_name %></p>
-        <p><strong>Rating:</strong> <%= review.rating %></p>
-        <p><strong>Comment:</strong> <%= review.comment %></p>
-      </div>
+  <% @reviews.each do |review| %>
+    <div class="review">
+      <p><strong>User Name:</strong> <%= review.user_name %></p>
+      <p><strong>Rating:</strong> <%= review.rating %></p>
+      <p><strong>Comment:</strong> <%= review.comment %></p>
+    </div>  
+  <% end %>
+  <%= paginate @reviews %>
+
+  <button id="add-review-btn">Add Review</button>
+  <div id="review-form" class="hidden">
+    <%= form_for [@restaurant, Review.new] do |form| %>
+      <%= form.label :user_name %>
+      <%= form.text_field :user_name %>
+
+      <%= form.label :rating %>
+      <%= form.number_field :rating %>
+
+      <%= form.label :comment %>
+      <%= form.text_area :comment %>
+
+      <%= form.submit "Submit Review" %>
     <% end %>
   </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var addReviewBtn = document.getElementById("add-review-btn");
+  var reviewForm = document.getElementById("review-form");
+
+  addReviewBtn.addEventListener("click", function() {
+    reviewForm.classList.toggle("hidden");
+  });
+});
+</script>
+
+
   <div id="photos-content" class="hidden">
     <div class="container">
       <div class="row">
@@ -85,7 +114,8 @@
   </div>
   <div id="book-content" class="hidden">
   <h2>Book a Table</h2>
-  <form action='<%= "/restaurants/#{@restaurant.id}/book" %>' method="post">
+
+  <%= form_for :restaurant, url: "/restaurants/#{@restaurant.id}/book" do |f| %>
     <div class="form-group">
       <label for="name">Name:</label>
       <input type="text" class="form-control" id="name" placeholder="Enter your name">
@@ -107,7 +137,7 @@
       <input type="time" class="form-control" id="time">
     </div>
     <button type="submit" class="btn btn-primary">Book</button>
-  </form>
+  <% end %>
 </div>
 <script>
 document.getElementById("overview-btn").addEventListener("click", function() {

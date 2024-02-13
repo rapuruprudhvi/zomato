@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <img src="https://b.zmtcdn.com/data/o2_assets/da94405b04f6ae6bf64a4e2a01b1b5c11686563732.png" alt="image">
+    <h1>Trending restaurants</h1>
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img alt="<%= restaurant.name %>" class="restaurant-image">
+          <div class="card-body">
+            <h5 class="card-title"><%= restaurant.name %></h5>
+            <p class="card-text">serves_alcohol: <%= restaurant.serves_alcohol %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
