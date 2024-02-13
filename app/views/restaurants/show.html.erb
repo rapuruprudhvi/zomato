@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Details</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row" style="width: 1100px; height: 320px;">
+      <div class="col-md-12">
+        <div class="card" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <!-- Card content goes here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+      <h1><%= @restaurant.name %></h1>
+      <p><strong>Address:</strong> <%= @restaurant.address %></p>
+      <p><strong>Cuisine:</strong> <%= @restaurant.cuisine %></p>
+      <p><strong>Rating:</strong> <%= @restaurant.rating %></p>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+        <button id="overview-btn" class="btn btn-primary btn-block">Overview</button>
+      </div>
+      <div class="col-md-2">
+        <button id="reviews-btn" class="btn btn-primary btn-block">Reviews</button>
+      </div>
+      <div class="col-md-2">
+        <button id="photos-btn" class="btn btn-primary btn-block">Photos</button>
+      </div>
+      <div class="col-md-2">
+        <button id="menu-btn" class="btn btn-primary btn-block">Menu</button>
+      </div>
+      <div class="col-md-2">
+        <button id="book-btn" class="btn btn-primary btn-block">Book a Table</button>
+      </div>
+    </div>
+  </div>
+  <div id="overview-content" class="hidden">
+    <h1><%= @restaurant.name %></h1>
+    <p><strong>Address:</strong> <%= @restaurant.address %></p>
+    <p><strong>Cuisine:</strong> <%= @restaurant.cuisine %></p>
+    <p><strong>Rating:</strong> <%= @restaurant.rating %></p>
+  </div>
+  <div id="reviews-content" class="hidden">
+  <% @reviews.each do |review| %>
+    <div class="review">
+      <p><strong>User Name:</strong> <%= review.user_name %></p>
+      <p><strong>Rating:</strong> <%= review.rating %></p>
+      <p><strong>Comment:</strong> <%= review.comment %></p>
+    </div>  
+  <% end %>
+  <%= paginate @reviews %>
+
+  <button id="add-review-btn">Add Review</button>
+  <div id="review-form" class="hidden">
+    <%= form_for [@restaurant, Review.new] do |form| %>
+      <%= form.label :user_name %>
+      <%= form.text_field :user_name %>
+
+      <%= form.label :rating %>
+      <%= form.number_field :rating %>
+
+      <%= form.label :comment %>
+      <%= form.text_area :comment %>
+
+      <%= form.submit "Submit Review" %>
+    <% end %>
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  var addReviewBtn = document.getElementById("add-review-btn");
+  var reviewForm = document.getElementById("review-form");
+
+  addReviewBtn.addEventListener("click", function() {
+    reviewForm.classList.toggle("hidden");
+  });
+});
+</script>
+
+
+  <div id="photos-content" class="hidden">
+    <div class="container">
+      <div class="row">
+  
+        <img src="https://b.zmtcdn.com/data/pictures/0/20948090/a91428d58db71753bae125e6346d209e.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" style="height: 210px; width: 200px; margin-top: 25px;" onmouseover="showImageDetails('image1')">
+    
+        <img src="https://b.zmtcdn.com/data/pictures/0/20948090/87ff9dab268dfbccdace27226fe548ed.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" style="height:210px; width:200px; margin-top: 25px; margin-left: 30px;" onmouseover="showImageDetails('image2')">
+        
+        <img src="https://b.zmtcdn.com/data/pictures/0/20948090/e2fb00d96574bde3fc417287a92931e9.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" style="height:210px; width:200px; margin-top: 25px; margin-left: 30px;" onmouseover="showImageDetails('image3')">
+        
+        <img src="https://b.zmtcdn.com/data/pictures/0/20948090/c12b8affa2c81cd4b8272a4503a75660.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A" style="height:210px; width:200px; margin-top: 25px; margin-left: 30px;" onmouseover="showImageDetails('image4')">
+      </div>
+    </div>
+  </div>
+  
+  <div id="menu-content" class="hidden">
+  <h2><%= @restaurant.name %></h2>
+  <h5>Menu</h5>
+   <img src="https://b.zmtcdn.com/data/menus/342/20996342/04c5e2d787b1ee38aa811c0eb7454cfd.jpg?fit=around%7C200%3A200&crop=200%3A200%3B%2A%2C%2A"style="margin-top: px">
+  </div>
+  <div id="book-content" class="hidden">
+  <h2>Book a Table</h2>
+
+  <%= form_for :restaurant, url: "/restaurants/#{@restaurant.id}/book" do |f| %>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control" id="name" placeholder="Enter your name">
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone:</label>
+      <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+    </div>
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" class="form-control" id="date">
+    </div>
+    <div class="form-group">
+      <label for="time">Time:</label>
+      <input type="time" class="form-control" id="time">
+    </div>
+    <button type="submit" class="btn btn-primary">Book</button>
+  <% end %>
+</div>
+<script>
+document.getElementById("overview-btn").addEventListener("click", function() {
+  toggleVisibility("overview-content");
+  hideContent("reviews-content");
+  hideContent("photos-content");
+  hideContent("menu-content");
+  hideContent("book-content");
+});
+
+document.getElementById("reviews-btn").addEventListener("click", function() {
+  toggleVisibility("reviews-content");
+  hideContent("overview-content");
+  hideContent("photos-content");
+  hideContent("menu-content");
+  hideContent("book-content");
+});
+
+document.getElementById("photos-btn").addEventListener("click", function() {
+  toggleVisibility("photos-content");
+  hideContent("overview-content");
+  hideContent("reviews-content");
+  hideContent("menu-content");
+  hideContent("book-content");
+});
+
+document.getElementById("menu-btn").addEventListener("click", function() {
+  toggleVisibility("menu-content");
+  hideContent("overview-content");
+  hideContent("reviews-content");
+  hideContent("photos-content");
+  hideContent("book-content");
+});
+
+document.getElementById("book-btn").addEventListener("click", function() {
+  toggleVisibility("book-content");
+  hideContent("overview-content");
+  hideContent("reviews-content");
+  hideContent("photos-content");
+  hideContent("menu-content");
+});
+
+// Function to toggle visibility
+function toggleVisibility(id) {
+  document.querySelectorAll(".hidden").forEach(function(element) {
+    element.classList.add("hidden");
+  });
+  document.getElementById(id).classList.remove("hidden");
+}
+
+// Function to hide specific content section
+function hideContent(id) {
+  document.getElementById(id).classList.add("hidden");
+}
+</script>

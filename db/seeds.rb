@@ -8,6 +8,9 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-AdminUser.create!(
-    email:'addmin@email.com',password:'password',password_confirmation:'password'
+if AdminUser.count == 0
+    AdminUser.create!(
+        email:'addmin@email.com',password:'password',password_confirmation:'password'
     ) if Rails.env.development?
+end
+

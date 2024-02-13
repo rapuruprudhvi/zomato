@@ -5,7 +5,7 @@ class CollectionsController < ApplicationController
         @places = @collection.places
       
         respond_to do |format|
-          format.html # show.html.erb
+          format.html 
           format.json { render json: @collection }
         end
       end
