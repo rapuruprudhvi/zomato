@@ -1,26 +1,25 @@
 
- @import 'bootstrap';
+ @import'bootstrap';
  .button {
-    display: inline-block;
-    text-decoration: none;
     color: rgb(130, 130, 130);
+    display: inline-block;
     font-size: small;
-    margin-right: 5px;
-    margin-top: 10px; 
+    margin-right:5px;
+    margin-top:10px; 
+    text-decoration: none;
   }
-  .logo{
+  .logo {
     height: 30px;
-    width: 30px;
     margin-top: 22px;
+    width: 30px; 
   }
-  .out{
+  .out {
    margin-top: 20px;
   }
- .weight{
+ .weight {
   color:#888;
  }
-  
  .restaurant-image {
-  width: 250px;
   height: 280px;
+  width: 250px;
 }
