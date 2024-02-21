@@ -11,12 +11,12 @@ class RestaurantsController < ApplicationController
   end
 
   def best_rated
-    @restaurants = Restaurant.where("created_at >= ?", 7.days.ago).order(rating: :desc)
+    @restaurants = Restaurant.where("created_at >= ?", 30.days.ago).order(rating: :desc)
     render :index
   end
 
   def trending
-    @restaurants = Restaurant.where("created_at >= ?", 7.days.ago).order(rating: :desc)
+    @restaurants = Restaurant.where("created_at >= ?", 30.days.ago).order(rating: :desc)
     render :index
   end
 

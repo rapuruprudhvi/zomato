@@ -6,5 +6,7 @@ class Restaurant < ApplicationRecord
     scope :newly_opened, -> { where('opening_date >= ?', 2.days.ago) }
     scope :trending, -> { order('rating DESC').limit(5) } 
     has_many :reviews
-   
+    def average_rating
+        reviews.average(:rating)
+      end
 end

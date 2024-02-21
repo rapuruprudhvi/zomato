@@ -25,7 +25,6 @@
         </div>
       </a>
     </div>
-
     <div class="col-md-3">
       <a class="nav-link" href="<%= best_rated_restaurants_path %>">
         <div class="card" style="width: 260px; height: 320px;">
@@ -59,22 +58,86 @@
         <div class="sc-cgzHhG crXbPI" style="margin-right: 10px;">
             <svg xmlns="http://www.w3.org/2000/svg" width="63" height="18" role="img"></svg>
         </div>
-        <a href="#" class="filters" style="margin-right: 10px; width: 96px; height: 36px;">Filters</a>
-        <a href="#" class="gold" style="margin-right: 10px; width: 96px; height: 36px;">Gold</a>
+        <a href="#" class="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 0px;margin-right: 22px;margin-bottom: 12px;">  Filters  </a>  
+        <a href="btn btn-primary filters" class="gold" style="margin-right: 10px; width: 96px; height: 36px;">Gold</a>
         <a href="<%= rating_restaurants_path %>" class="rating" style="margin-right: 10px; width: 128px; height: 36px;">Rating: 4.0+</a>
         <a href="<%= outdoor_seating_restaurants_path %>" class="outdoor" style="margin-right: 10px; width: 126px; height: 36px;">Outdoor Seating</a>
         <a href="<%= serves_alcohol_restaurants_path %>" class="serves" style="margin-right: 10px; width: 115px; height: 36px;">Serves Alcohol</a>
         <a href="#" class="open" style="width: 88px; height: 36px;">Open Now</a>
     </div>
-    <img src="https://b.zmtcdn.com/data/o2_assets/da94405b04f6ae6bf64a4e2a01b1b5c11686563732.png" alt="image">
+      <img src="https://b.zmtcdn.com/data/o2_assets/da94405b04f6ae6bf64a4e2a01b1b5c11686563732.png" alt="image">
+    </div>
+<h1>Trending dining Restaurants</h1>
+<div class="row">
+  <% @restaurants.each do |restaurant| %>
+    <div class="col-md-4 mb-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= restaurant.name %></h5>
+          <p class="card-text">Rating: <%= restaurant.rating %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Filters</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <section class="sorting-section">
+              <h5>Filter Options</h5>
+              <section class="sorting-section">
+              <div class="sorting-options">
+                  <div class="sort-by">
+                      <a id="sortByPopularity" href="#">Sort</a>
+                      <div id="popularityOptions" class="options hidden"  style="width: 180px; height: 80px;">
+                      </div>
+                  </div>
+              </div>
+              <div class="filter-options">
+                <div class="filter-option">
+                  <a href="#" id="cuisinesButton">Cuisines</a>
+                  <div id="cuisinesOptions" class="options hidden"  style="width: 180px; height: 80px;">
+                    <!-- Cuisines sorting options -->
+                  </div>
+                </div>
+                <div class="filter-option">
+                  <a href="#" id="ratingButton">Rating</a>
+                  <div id="ratingOptions" class="options hidden" style="width: 180px; height: 80px;">
+                    <!-- Rating sorting options -->
+                  </div>
+                </div>
+                <div class="filter-option">
+                  <a href="#" id="costButton">Cost for two</a>
+                  <div id="costOptions" class="options hidden" style="width: 180px; height: 80px;">
+                    <!-- Cost sorting options -->
+                  </div>
+                </div>
+                <div class="filter-option">
+                  <a href="#" id="moreFiltersButton">More filters</a>
+                  <div id="moreFiltersOptions" class="options hidden" style="width: 180px; height: 80px;">
+                    <!-- More filters options -->
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          <div class="col-md-6">
+            hi
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear</button>
+        <button type="button" class="btn btn-primary">Apply</button>
+      </div>
+    </div>
+  </div>
 </div>
 
-
-
-
-
-
-
-
-
-  

@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   
- 
+  get 'show_modal', to: 'home#show_modal', as: :show_modal
+
   resources :restaurants do
     collection do
       get 'newly_opened'
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
       get 'rating'
       get 'outdoor_seating'
       get 'serves_alcohol'
+      get 'filters'
     end  
         post 'book', to: 'bookings#create'
         resources :reviews, only: [:create]

@@ -5,4 +5,7 @@ class HomeController < ApplicationController
     @trending_restaurants = Restaurant.trending
     @collections = Collection.includes(:places).all
   end 
+  def show_modal
+
+  end
 end
