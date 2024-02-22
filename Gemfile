@@ -68,7 +68,6 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
-gem "sassc-rails"
 
 gem 'rails_admin', '~> 3.0'
 
@@ -78,3 +77,11 @@ gem 'bootsnap', require: false
 
 gem 'kaminari'
 
+# Use jquery as the JavaScript librar
+gem 'jquery-rails'
+
+# Use jquery-ui for pretty UI
+gem 'jquery-ui-rails'
+
+# Use Sass to process CSS
+gem "sassc-rails"
