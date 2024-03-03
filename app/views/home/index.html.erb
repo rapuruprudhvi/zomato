@@ -3,8 +3,10 @@
       <img alt="illustration" src="https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png" loading="lazy" class="logo col-4" >
       <h3 class="out col-8">Dining Out</h3>
     </div> 
-    <ul class="list-group">
-    <div class="row">
+    <a href="<%= delivery_items_path %>" style="width: 300px; height: 71px;" class="row">
+  <img alt="illustration" src="https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png?output-format=webp" loading="lazy" class="logo col-4" style="left: 279px; bottom: 66px;">
+  <h3 class="out col-8" style="left: 263px; bottom: 69px;">Delivery</h3>
+</a>
     <h3>Collections</h3>
     <div class="row">
     <div class="col-md-9">
@@ -12,6 +14,7 @@
     </div>
     <div class="col-md-3">
       <span>All Collections in Bengaluru</span>
+    </div>
     </div>
     <div class="container">
   <div class="row">
@@ -66,19 +69,27 @@
     </div>
       <img src="https://b.zmtcdn.com/data/o2_assets/da94405b04f6ae6bf64a4e2a01b1b5c11686563732.png" alt="image">
     </div>
-<h1>Trending dining Restaurants</h1>
-<div class="row">
-  <% @restaurants.each do |restaurant| %>
-    <div class="col-md-4 mb-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= restaurant.name %></h5>
-          <p class="card-text">Rating: <%= restaurant.rating %></p>
-        </div>
-      </div>
+    <h3> Marthalli restaurants,Banglore </h3>
+    <% if @restaurants.any? %>
+    <div class="restaurant-grid row">
+      <% @restaurants.each do |restaurant| %>  
+          <div class="col-md-4 mb-4">
+            <div class="restaurant-card">
+              <div class="card h-100" onmouseover="highlightCard(this)" onmouseout="unhighlightCard(this)">
+                <div class="card-body">
+                  <h6 class="card-title"><strong>Restaurant: <%= restaurant.name %></strong></h6>
+                  <p class="card-text">Address: <%= restaurant.address %></p>
+                  <p class="card-text">Cuisine: <%= restaurant.cuisine %></p>
+                  <p class="card-text">Rating: <span class="badge badge-success"><%= restaurant.rating %> <i class="sc-1q7bklc-5 kHxpSk"></i></span></p>
+                </div>
+              </div>
+            </div>
+          </div>  
+      <% end %>
     </div>
-  <% end %>
-</div>
+  <% else %>
+    <p>No restaurants found.</p>
+  <% end %>  
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -101,7 +112,6 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3">
-            <!-- Column with links for sorting, cuisine, rating, cost for two, and more filters -->
             <div class="links-column">
                 <a href="#" class="link" data-target="popularityOptions">Sort</a><br>
                 <a href="#" class="link" data-target="cuisinesOptions">Cuisines</a><br>
@@ -112,19 +122,16 @@
         <div class="col-md-9">
         <div class="options-column">
             <div id="popularityOptions" class="options hidden">
-            <a href="<%= best_rated_restaurants_path %>">
-            <input type="radio" name="sortOption" value="popularity"> Popularity
-          </a><br>
-                          <label><input type="radio" name="sortOption" value="rating_desc"> Rating: High to Low</label><br>
-                <label><input type="radio" name="sortOption" value="cost_asc"> Cost: Low to High</label><br>
-                <label><input type="radio" name="sortOption" value="cost_desc"> Cost: High to Low</label><br>
-                <label><input type="radio" name="sortOption" value="distance_asc"> Distance</label><br>
-            </div>
+            <label><input type="radio" name="sortOption" value="rating_asc"> Popularity: Popularity</label><br>
+            <label><input type="radio" name="sortOption" value="rating_desc"> Rating: High to Low</label><br>
+            <label><input type="radio" name="sortOption" value="cost_asc"> Cost: Low to High</label><br>
+            <label><input type="radio" name="sortOption" value="cost_desc"> Cost: High to Low</label><br>
+            <label><input type="radio" name="sortOption" value="distance_asc"> Distance</label><br>
+        </div>
             <div id="cuisinesOptions" class="options hidden">
-                <!-- Cuisines sorting options -->
-                Cuisines options 
+            <label><input type="radio" name="cuisinesOptions" value="4">India</label><br>
+            <label><input type="radio" name="cuisinesOptions" value="3">japan</label><br>
             </div>
-          
             <div id="ratingOptions" class="options hidden">
                 <label><input type="radio" name="ratingOption" value="4"> 4+</label><br>
                 <label><input type="radio" name="ratingOption" value="3"> 3+</label><br>
@@ -145,18 +152,15 @@
       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear</button>
       <button type="button" class="btn btn-primary" id="applyFilters">Apply</button>
     </div>
-
 <script>
   document.addEventListener("DOMContentLoaded", function() {
       const links = document.querySelectorAll('.link');
-
       links.forEach(link => {
           link.addEventListener('click', function(event) {
               event.preventDefault();
               const targetId = this.getAttribute('data-target');
               const targetOptions = document.getElementById(targetId);
               const optionsColumns = document.querySelectorAll('.options-column .options');
-
               optionsColumns.forEach(column => {
                   if (column === targetOptions) {
                       column.classList.remove('hidden');
@@ -169,4 +173,3 @@
   });
 </script>
 
-            
