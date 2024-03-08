@@ -2,5 +2,44 @@
 <a href="#" class="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 0px;margin-right: 22px;margin-bottom: 12px;">  Filters  </a>  
 <a href="#" class="rating" style="margin-right: 10px; width: 128px; height: 36px;">Rating: 4.0+</a>
 <a href="#" class="outdoor" style="margin-right: 10px; width: 126px; height: 36px;">Pure veg</a>
-<a href="#" class="gold" style="margin-right: 10px; width: 96px; height: 36px;">cuisine</a>
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<a href="#" class="gold" id="openModal">cuisine</a>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document" style="top:100px">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Cuisines</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        </button>
+      </div>
+      <div class="modal-body">
+      <div style="position: relative;">
+          <input type="text" autocomplete="on" class="search" style="width: 470px; padding-right: 20px;" value="">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#B5B5B5" width="17" height="17" viewBox="0 0 20 20" aria-labelledby="icon-svg-title- icon-svg-desc-" role="img" class="sc-rbbb40-0 fajqkJ clear-icon" style="position: absolute; top: 50%; transform: translateY(-50%); right: 5px;">
+              <title>cross</title>
+              <path d="M11.42 10.42l3.54-3.54c0.38-0.4 0.38-1.040 0-1.42s-1.020-0.4-1.42 0l-3.54 3.54-3.54-3.54c-0.4-0.4-1.020-0.4-1.42 0s-0.38 1.020 0 1.42l3.54 3.54-3.54 3.54c-0.38 0.38-0.38 1.020 0 1.42 0.2 0.18 0.46 0.28 0.72 0.28s0.5-0.1 0.7-0.28l3.54-3.56 3.54 3.56c0.2 0.18 0.46 0.28 0.72 0.28s0.5-0.1 0.7-0.28c0.38-0.4 0.38-1.040 0-1.42l-3.54-3.54z"></path>
+          </svg>
+      </div>
+  </div>
+      <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Clear</button>
+      <button type="button" class="btn btn-primary" id="applyFilters">Apply</button>
+    </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.getElementById('openModal').addEventListener('click', function() {
+    $('#exampleModal').modal('show');
+  });
+  const inputField = document.querySelector('.search');
+  const clearIcon = document.querySelector('.clear-icon');
+  clearIcon.addEventListener('click', () => {
+      inputField.value = '';
+  })
+</script>
+</body>
+</html>
 </div>
