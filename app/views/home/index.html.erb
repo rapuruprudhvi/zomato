@@ -1,16 +1,7 @@
-<div class="container ">
-    <div style="width: 300px; height: 71px;" class=" row">
-      <img alt="illustration" src="https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png" loading="lazy" class="logo col-4" >
-      <h3 class="out col-8">Dining Out</h3>
-    </div> 
-    <a href="<%= delivery_items_path %>" style="width: 300px; height: 71px;" class="row">
-  <img alt="illustration" src="https://b.zmtcdn.com/data/o2_assets/c0bb85d3a6347b2ec070a8db694588261616149578.png?output-format=webp" loading="lazy" class="logo col-4" style="left: 279px; bottom: 66px;">
-  <h3 class="out col-8" style="left: 263px; bottom: 69px;">Delivery</h3>
-</a>
-    <h3>Collections</h3>
+  <h3>Collections</h3>
     <div class="row">
     <div class="col-md-9">
-      <h5 class="weight">Explore curated lists of top restaurants,cafes,pubs,and bars in Bengaluru,based on trends</h5>
+      <h5 class="weight"><%= t("collection_message") %></h5>
     </div>
     <div class="col-md-3">
       <span>All Collections in Bengaluru</span>
@@ -79,7 +70,6 @@
                 <div class="card-body">
                   <h6 class="card-title"><strong>Restaurant: <%= restaurant.name %></strong></h6>
                   <p class="card-text">Address: <%= restaurant.address %></p>
-                  <p class="card-text">Cuisine: <%= restaurant.cuisine %></p>
                   <p class="card-text">Rating: <span class="badge badge-success"><%= restaurant.rating %> <i class="sc-1q7bklc-5 kHxpSk"></i></span></p>
                 </div>
               </div>
