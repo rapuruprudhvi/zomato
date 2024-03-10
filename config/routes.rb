@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   
   get 'show_modal', to: 'home#show_modal', as: :show_modal
-
+  resources :restaurant_items, only: [] do
+    get 'show_restaurants', on: :collection
+  end
   resources :restaurants do
     collection do
       get 'newly_opened'
