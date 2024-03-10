@@ -43,8 +43,15 @@
 </body>
 </html>
 </div>
-<div class=container style="width: 1519px; height: 336px; border: 1px solid black;">
-  <h2 style="margin-top:20px"> Inspiration for your first order </h2>
-</div>
+
+<h1>Restaurants Serving <%= params[:item_name] %></h1>
+<%= link_to show_restaurants_restaurant_items_path(item_name: 'Biryani') do %>
+  <%= image_tag 'https://b.zmtcdn.com/data/dish_images/d19a31d42d5913ff129cafd7cec772f81639737697.png', width: '150', height: '150' %>
+<% end %>
+<%= link_to show_restaurants_restaurant_items_path(item_name: 'Dosa') do %>
+  <%= image_tag 'https://b.zmtcdn.com/data/o2_assets/8dc39742916ddc369ebeb91928391b931632716660.png', width: '150', height: '150', style: 'border-radius: 50%; margin-left: 30px;' %>
+<% end %>
+
+
 
 

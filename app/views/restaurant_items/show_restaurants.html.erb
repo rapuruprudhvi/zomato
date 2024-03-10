@@ -1,0 +1,22 @@
+<h1>Restaurants Serving <%= params[:item_name] %></h1>
+
+<div class="row">
+  <% @restaurants.each_slice(4) do |restaurants_slice| %>
+    <div class="row">
+      <% restaurants_slice.each do |restaurant| %>
+        <div class="col-md-3 mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= restaurant.name %></h5>
+              <ul>
+                <% restaurant.items.each do |item| %>
+                  <li><%= item.name %> - <%= item.price %> - <%= item.cuisine %></li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

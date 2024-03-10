@@ -13,4 +13,3 @@ if AdminUser.count == 0
         email:'addmin@email.com',password:'password',password_confirmation:'password'
     ) if Rails.env.development?
 end
-
