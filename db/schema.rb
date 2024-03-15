@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_09_124212) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_14_121156) do
   create_table "admin_users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -43,6 +43,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_09_124212) do
     t.string "cuisine"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "rating", precision: 10
+    t.boolean "pure_veg"
   end
 
   create_table "places", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :collections, only: [:show]
   resources :delivery_items
-
+  resources :items do
+    get 'rating', on: :collection
+  end
+  get '/veg_items', to: 'delivery_items#veg', as: 'veg_items'
   root "home#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -30,6 +33,5 @@ Rails.application.routes.draw do
         post 'book', to: 'bookings#create'
         resources :reviews, only: [:create]
 
-  
   end
 end

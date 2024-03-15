@@ -1,22 +1,27 @@
+<div class=container>
+<a href="#" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 0px; margin-right: 22px; ">Filters</a>  
+<a href="#" class="btn btn-outline-secondary rating" style="margin-right: 10px; width: 128px; height: 36px;">Rating: 4.0+</a>
+<a href="#" class="btn btn-outline-secondary outdoor" style="margin-right: 10px; width: 126px; height: 36px;">Pure veg</a>
 <h1>Restaurants Serving <%= params[:item_name] %></h1>
-
 <div class="row">
   <% @restaurants.each_slice(4) do |restaurants_slice| %>
-    <div class="row">
-      <% restaurants_slice.each do |restaurant| %>
+    <% restaurants_slice.each do |restaurant| %>
+      <% if params[:item_name] %>
         <div class="col-md-3 mb-4">
-          <div class="card">
+          <div class="card card-custom">
             <div class="card-body">
               <h5 class="card-title"><%= restaurant.name %></h5>
               <ul>
                 <% restaurant.items.each do |item| %>
-                  <li><%= item.name %> - <%= item.price %> - <%= item.cuisine %></li>
+                  <% if item.name == params[:item_name] %>
+                    <li><%= item.name %> - <%= item.price %> - <%= item.cuisine %></li>
+                  <% end %>
                 <% end %>
               </ul>
             </div>
           </div>
         </div>
       <% end %>
-    </div>
+    <% end %>
   <% end %>
 </div>

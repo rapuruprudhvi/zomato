@@ -1,11 +1,11 @@
 <div class=container>
-<a href="#" class="" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 0px;margin-right: 22px;margin-bottom: 12px;">  Filters  </a>  
-<a href="#" class="rating" style="margin-right: 10px; width: 128px; height: 36px;">Rating: 4.0+</a>
-<a href="#" class="outdoor" style="margin-right: 10px; width: 126px; height: 36px;">Pure veg</a>
+<a href="#" class="btn btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-left: 0px; margin-right: 22px; ">Filters</a>  
+<a href="<%= rating_items_path %>"  class="btn btn-outline-secondary rating" style="margin-right: 10px; width: 128px; height: 36px;">Rating: 4.0+</a>
+<a href="<%= veg_items_path %>" class="btn btn-outline-secondary outdoor" style="margin-right: 10px; width: 126px; height: 36px;">Pure veg</a>
 <!DOCTYPE html>
 <html lang="en">
 <body>
-<a href="#" class="gold" id="openModal">cuisine</a>
+<a href="#"  class="btn btn-outline-secondary " id="openModal">cuisine</a>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document" style="top:100px">
     <div class="modal-content">
@@ -43,15 +43,38 @@
 </body>
 </html>
 </div>
-
-<h1>Restaurants Serving <%= params[:item_name] %></h1>
-<%= link_to show_restaurants_restaurant_items_path(item_name: 'Biryani') do %>
-  <%= image_tag 'https://b.zmtcdn.com/data/dish_images/d19a31d42d5913ff129cafd7cec772f81639737697.png', width: '150', height: '150' %>
-<% end %>
-<%= link_to show_restaurants_restaurant_items_path(item_name: 'Dosa') do %>
-  <%= image_tag 'https://b.zmtcdn.com/data/o2_assets/8dc39742916ddc369ebeb91928391b931632716660.png', width: '150', height: '150', style: 'border-radius: 50%; margin-left: 30px;' %>
-<% end %>
-
-
-
-
+<div class="container">
+  <div style="max-width: 1519px; height: 300px; border: 1px solid #ccc; padding: 10px; margin-top: 30px">
+    <h2>Restaurants Serving <%= params[:item_name] %></h2>
+    <%= link_to show_restaurants_restaurant_items_path(item_name: 'Idly'), style: 'margin-left: 30px; display: inline-block; text-align: center; text-decoration: none;' do %>
+      <div style="border-radius: 50%; overflow: hidden;">
+        <%= image_tag("https://b.zmtcdn.com/data/dish_images/d9766dd91cd75416f4f65cf286ca84331634805483.png", alt: "Idly", width: "150", height: "150" ) %>
+      </div>
+      <p style="margin-top: 15px;">Idly</p>
+    <% end %>    
+    <%= link_to show_restaurants_restaurant_items_path(item_name: 'Dosa'), style: 'margin-left: 35px; display: inline-block; text-align: center; text-decoration: none;' do %>
+      <div style="border-radius: 50%; overflow: hidden;">
+        <%= image_tag("https://b.zmtcdn.com/data/o2_assets/8dc39742916ddc369ebeb91928391b931632716660.png", alt: "Dosa", width: "150", height: "150") %>
+      </div>
+      <p style="margin-top: 15px;">Dosa</p>
+    <% end %>
+    <%= link_to show_restaurants_restaurant_items_path(item_name: 'Biryani'), style: 'margin-left: 35px; display: inline-block; text-align: center; text-decoration: none;' do %>
+      <div style="border-radius: 50%; overflow: hidden;">
+        <%= image_tag("https://b.zmtcdn.com/data/dish_images/d19a31d42d5913ff129cafd7cec772f81639737697.png", alt: "Biryani", width: "150", height: "150") %>
+      </div>
+      <p style="margin-top: 15px;">Biryani</p>
+    <% end %>    
+    <%= link_to show_restaurants_restaurant_items_path(item_name: 'Mutton biryani'), style: 'margin-left: 35px; display: inline-block; text-align: center; text-decoration: none;' do %>
+      <div style="border-radius: 50%; overflow: hidden;">
+        <%= image_tag("https://b.zmtcdn.com/data/dish_images/197987b7ebcd1ee08f8c25ea4e77e20f1634731334.png", alt: "Mutton Biryani", width: "150", height: "150") %>
+      </div>
+      <p style="margin-top: 15px;">Chicken</p>
+    <% end %>    
+    <%= link_to show_restaurants_restaurant_items_path(item_name: 'Pizza'), style: 'margin-left: 35px; display: inline-block; text-align: center; text-decoration: none;' do %>
+      <div style="border-radius: 50%; overflow: hidden;">
+        <%= image_tag("https://b.zmtcdn.com/data/o2_assets/d0bd7c9405ac87f6aa65e31fe55800941632716575.png", alt: "Pizza", width: "150", height: "150") %>
+      </div>
+      <p style="margin-top: 15px;">Pizza</p>
+    <% end %>    
+  </div>
+</div>

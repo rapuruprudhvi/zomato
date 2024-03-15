@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <h1>Items with a Rating of 4 or Above</h1>
+    <% @items.each do |item| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"><%= item.name %></h5>
+            <p class="card-text">Price: <%= item.price %></p>
+            <p class="card-text">Cuisine: <%= item.cuisine %></p>
+            <p class="card-text">Rating: <%= item.rating %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
