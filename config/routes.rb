@@ -17,7 +17,10 @@ Rails.application.routes.draw do
   
   get 'show_modal', to: 'home#show_modal', as: :show_modal
   resources :restaurant_items, only: [] do
-    get 'show_restaurants', on: :collection
+    collection do
+      get 'show_restaurants'
+    end
+    get 'items_details', on: :collection
   end
   resources :restaurants do
     collection do
