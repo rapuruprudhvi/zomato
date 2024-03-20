@@ -1,0 +1,141 @@
+<div class="container">
+    <div class="row" style="width: 1100px; height: 320px;">
+      <div class="col-md-12">
+        <div class="card" style="width: 100%; height: 100%;">
+          <div class="card-body">
+            <!-- Card content goes here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+    <h1><%= @item.name %></h1>
+    <p>Price: <%= @item.price %></p>
+    <% @item.restaurants.each do |restaurant| %>
+      <p>Restaurant: <%= restaurant.name %></p>
+      <p>Address: <%= restaurant.address %></p>
+    <% end %>
+  </div>
+   </div>
+    <div class="row" id="button-container">
+    <div class="col-md-2">
+      <a id="overview-link" href="#">Overview</a>
+    </div>
+    <div class="col-md-2">
+      <a id="reviews-link" href="#">Order Online</a>
+    </div>
+    <div class="col-md-2">
+      <a id="photos-link" href="#">Reviews</a>
+    </div>
+    <div class="col-md-2">
+      <a id="menu-link" href="#">Photos</a>
+    </div>
+    <div class="col-md-2">
+      <a id="book-link" href="#">Menu</a>
+    </div>
+  </div>
+  
+  <div id="overview-content" style="display: none;">
+  <div class="row">
+  <h1><%= @item.name %></h1>
+  <p>Price: <%= @item.price %></p>
+  <% @item.restaurants.each do |restaurant| %>
+    <p>Restaurant: <%= restaurant.name %></p>
+    <p>Address: <%= restaurant.address %></p>
+  <% end %>
+</div>
+  </div>
+  <div id="reviews-content" style="display: none;">
+  <div class="container">
+    <div class="row">
+      <!-- First column (3 columns wide) -->
+      <div class="col-md-3">
+        <h4 style="margin-top:40px;"><%= @item.name %></h4>
+      </div>
+      
+      <!-- Second column (9 columns wide) -->
+      <div class="col-md-9">
+      <h4 style="margin-top:40px;">item-name:<%= @item.name %></h4>
+      <p>Price: <%= @item.price %></p>
+      <% @item.restaurants.each do |restaurant| %>
+        <p>Restaurant: <%= restaurant.name %></p>
+        <p>Address: <%= restaurant.address %></p>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+  <div id="photos-content" style="display: none;">
+   <h1> bi </h1>
+  </div>
+  <div id="menu-content" style="display: none;">
+    <!-- Menu content goes here -->
+  </div>
+  
+  <div id="book-content" style="display: none;">
+    <!-- Book content goes here -->
+  </div>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("overview-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    toggleVisibility("overview-content");
+    hideContent("reviews-content");
+    hideContent("photos-content");
+    hideContent("menu-content");
+    hideContent("book-content");
+  });
+
+  document.getElementById("reviews-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    toggleVisibility("reviews-content");
+    hideContent("overview-content");
+    hideContent("photos-content");
+    hideContent("menu-content");
+    hideContent("book-content");
+  });
+
+  document.getElementById("photos-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    toggleVisibility("photos-content");
+    hideContent("overview-content");
+    hideContent("reviews-content");
+    hideContent("menu-content");
+    hideContent("book-content");
+  });
+
+  document.getElementById("menu-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    toggleVisibility("menu-content");
+    hideContent("overview-content");
+    hideContent("reviews-content");
+    hideContent("photos-content");
+    hideContent("book-content");
+  });
+
+  document.getElementById("book-link").addEventListener("click", function(event) {
+    event.preventDefault();
+    toggleVisibility("book-content");
+    hideContent("overview-content");
+    hideContent("reviews-content");
+    hideContent("photos-content");
+    hideContent("menu-content");
+  });
+
+  function toggleVisibility(id) {
+    var element = document.getElementById(id);
+    if (element.style.display === "none") {
+      element.style.display = "block";
+    } else {
+      element.style.display = "none";
+    }
+  }
+
+  function hideContent(id) {
+    document.getElementById(id).style.display = "none";
+  }
+});
+</script> 

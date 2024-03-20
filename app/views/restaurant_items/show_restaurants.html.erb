@@ -4,24 +4,22 @@
 <a href="#" class="btn btn-outline-secondary outdoor" style="margin-right: 10px; width: 126px; height: 36px;">Pure veg</a>
 <h1>Restaurants Serving <%= params[:item_name] %></h1>
 <div class="row">
-  <% @restaurants.each_slice(4) do |restaurants_slice| %>
+  <% @restaurants.each_slice(3) do |restaurants_slice| %>
     <% restaurants_slice.each do |restaurant| %>
-      <% if params[:item_name] %>
-        <div class="col-md-3 mb-4">
-          <div class="card card-custom">
-            <div class="card-body">
-              <h5 class="card-title"><%= restaurant.name %></h5>
-              <ul>
-                <% restaurant.items.each do |item| %>
-                  <% if item.name == params[:item_name] %>
-                    <li><%= item.name %> - <%= item.price %> - <%= item.cuisine %></li>
-                  <% end %>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-      <% end %>
+      <div class="col-md-4 mb-4">
+        <% restaurant.items.each do |item| %>
+          <% if item.name == params[:item_name] %>
+            <%= link_to items_details_restaurant_items_path(id: item.id), class: "card-link" do %>
+              <div class="card card-custom">
+                <div class="card-body">
+                  <h5 class="card-title"><%= item.name %></h5>
+                  <p>Price: <%= item.price %> - Cuisine: <%= item.cuisine %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>
