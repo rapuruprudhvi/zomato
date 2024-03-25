@@ -1,0 +1,2 @@
+$("#quantity-buttons-<%= @item.id %>").empty();
+$("#quantity-buttons-<%= @item.id %>").html("<%= escape_javascript render(partial: 'carts/quantity_buttons', locals: { quantity: @quantity, item: @item, cart_item: @cart_item }) %>");

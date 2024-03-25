@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'cart_items/index'
+  get 'cart_items/create'
+  get 'cart_items/update'
+  get 'cart_items/destroy'
+  get 'carts/show'
   get 'places/index'
   devise_for :admin_users
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
@@ -22,6 +27,15 @@ Rails.application.routes.draw do
     end
     get 'items_details', on: :collection
   end
+  resources :carts, only: [:show] do
+    post 'add_to_cart', on: :member
+    post 'decrement_cart_quantity', on: :member
+    post 'increment_cart_quantity', on: :member
+  end
+  
+  resources :cart_items, except: [:show]
+  
+
   resources :restaurants do
     collection do
       get 'newly_opened'

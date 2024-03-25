@@ -5,4 +5,7 @@ class ItemsController < ApplicationController
       def rating
         @items = Item.where("rating >= ?", 4)
       end
+     def show
+      @items = Item.joins(:restaurants).where(name: params[:item_name])
+    end
 end
