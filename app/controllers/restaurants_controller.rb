@@ -22,6 +22,7 @@ class RestaurantsController < ApplicationController
 
   def rooftop
     @restaurants = Restaurant.where(rooftop: true)
+    binding.break
     render :index
   end
 

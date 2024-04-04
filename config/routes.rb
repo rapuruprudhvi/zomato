@@ -27,12 +27,13 @@ Rails.application.routes.draw do
     end
     get 'items_details', on: :collection
   end
-  resources :carts, only: [:show] do
+  resources :carts, only:[:show, :destroy] do
     post 'add_to_cart', on: :member
     post 'decrement_cart_quantity', on: :member
     post 'increment_cart_quantity', on: :member
   end
-  
+  delete '/cart_items/:id', to: 'cart_items#destroy', as: 'delete_cart_item'
+
   resources :cart_items, except: [:show]
   
 

@@ -16,17 +16,14 @@ class CartsController < ApplicationController
       format.js
     end
   end
-  
-  
+
   def decrement_cart_quantity
+    
     @item = Item.find(params[:id])
     @cart_item = @cart.cart_items.find_by(item_id: @item.id)
     @cart_item.decrement!(:quantity) if @cart_item && @cart_item.quantity > 1
     @quantity = @cart_item.quantity
    render 'add_to_cart'
-    # respond_to do |format|
-    #   format.js
-    # end
   end
   
   def increment_cart_quantity
@@ -36,12 +33,12 @@ class CartsController < ApplicationController
     @cart_item.increment!(:quantity) if @cart_item
     @quantity = @cart_item.quantity
     render 'add_to_cart'
-
-    # respond_to do |format|
-    #   format.js
-    # end
   end
-
+  def destroy
+    @cart = Cart.find(params[:id])
+    @cart.destroy
+    redirect_to root_path, notice: "Cart deleted successfully."
+  end
   private
 
   def set_cart
